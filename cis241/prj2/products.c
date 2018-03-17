@@ -1,18 +1,23 @@
 #include <stdio>
 #include <string.h>
 struct product{
-	string name;
+	char[20] name;
 	int quantity;
 	int price;
 }
-int choice(int argc, char* argv[]){
-if(1 = argc){
-product *head = (product *)malloc(sizeof(product);
-d -> d = ‘n’; 
-head -> next = NULL;
+void createList(){
+	product *head = (product *)malloc(sizeof(product);
+	d -> d = ‘n’; 
+	head -> next = NULL;
 }
-if(2 = argc){
-string name = argv[];
+void getInfo ( struct product * pItem)  {
+	fscanf ( "%d %s %d", &(pItem->price), pItem->name, pItem->quantity);
+}
+void deleteProuct(struct product *head){
+	if(head!=NULL){
+	deleteProduct(head->next);
+	free(head);
+}
+}
 
-}
-}
+
