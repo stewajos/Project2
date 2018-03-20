@@ -56,7 +56,6 @@ void deleteAll(struct product* head){
 	free(head);
 }
 
-	printf("FIXME PLEASE! deleteAll method");
 
 }
 
