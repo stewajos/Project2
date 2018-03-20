@@ -51,6 +51,11 @@ void insert(struct product* newItem, struct product* head){
 
 //Delete entire list
 void deleteAll(struct product* head){
+	if(head!=NULL){
+	deleteAll(head->next);
+	free(head);
+}
+
 	printf("FIXME PLEASE! deleteAll method");
 
 }
