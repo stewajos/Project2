@@ -28,7 +28,8 @@ void deleteProduct(struct product *head, char* itemName){
 		head = head->next;
 
 	}	
-	if(head->next == NULL){
+	if(0 != strcmp(head->name, itemName)){
+		printf("Could not find product to delete");
 		return;
 		
 	}else{
@@ -57,10 +58,10 @@ void deleteAll(struct product* head){
 
 //search for a product by name
 struct product* search(struct product* head, char* itemName){
-	while(head->next != NULL && strcmp(head->name, itemName)){
+	while(head->next != NULL && 0 != strcmp(head->name, itemName)){
 		head = head->next;
 	}
-	if(head->next == NULL){
+	if(0 != strcmp(head->name, itemName)){
 		struct product* fail = malloc(sizeof(product));
 		fail->name = "Not Found."
 		return fail;
@@ -90,12 +91,12 @@ void display(struct product* head){
 //sell a product
 void sellProduct(struct product* head, char* itemName){
 	struct product* previous = head;
-	while(head->next != NULL && strcmp(head->name, itemName)){
+	while(head->next != NULL && 0 != strcmp(head->name, itemName)){
 		head = head->next;
 		previous = head;
 	}
 	
-	if(head->next == NULL){
+	if(0 != strcmp(head->name, itemName)){
 		printf("Product not found for Deletion");
 		return NULL;
 		
@@ -113,5 +114,15 @@ void sellProduct(struct product* head, char* itemName){
 }
 
 
-
-
+//purchase a product
+void purchaseProduct(struct product* head, char* itemName){
+	while(head->next != NULL && 0 != strcmp(head->name, itemName)){
+		head = head->next;
+		
+	}if(0 == strcmp(head->name, itemName)){
+		head->quantity = head->quantity + 1;
+	
+	}else{
+		printf("Could not find product %s\n", itemName);
+	}
+}
