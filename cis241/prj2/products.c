@@ -2,7 +2,7 @@
 #include <string.h>
 struct product{
 	char[20] name;
-	char[20] unit;
+	char[200] unit;
 	int quantity;
 	int price;
 	struct product* next;
@@ -75,14 +75,14 @@ struct product* search(struct product* head, char* itemName){
 }
 
 //Display products in list
-void display(struct product* head){
+void displayAll(struct product* head){
 	int count = 0;
 	while(head != NULL){
 		printf("Item %d:\n", count);
 		printf("Name: %s\n", head->name);
 		printf("Unit: %s\n", head->unit);
 		printf("Quantity: %d\n", head->quantity);
-		printf("Price: %d\n\n\n");
+		printf("Price: %d\n\n\n", head->price);
 		count++;
 		
 		head = head->next;
@@ -90,6 +90,17 @@ void display(struct product* head){
 	}
 	
 	
+}
+
+void display(struct product* node){
+	
+	printf("Name: %s\n", node->name);
+	printf("Unit: %s\n", node->unit);
+	printf("Quantity: %d\n", node->quantity);	
+	printf("Price: %d\n\n", node->price);
+
+
+
 }
 
 //sell a product
