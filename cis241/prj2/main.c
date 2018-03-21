@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-int main( int argc, const char** argv){
+#include "products.c"
+int main(){
 char option = 'q'; //variable to hold choices
 printf(" 1: create an empty list	2: insert a product\n 
 3: Delete a product	4: Delete entire list\n
@@ -11,7 +12,8 @@ while(option != 1 || option != 2 || option != 3 || option != 4 || option != 5 ||
 scanf("%c", option);
 
 if('1' == option){
-
+//creating linked list of Products
+product *head = (product *)malloc(sizeof(product));
 }
 else if('2' == option){
 
@@ -41,4 +43,5 @@ else if('0' == option){
 exit(1);
 }
 }
+return 0;
 }
