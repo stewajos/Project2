@@ -48,18 +48,14 @@ void insert(struct product* newItem, struct product* head){
 
 //Delete entire list
 void deleteAll(struct product* head){
-	if(head->next!=NULL){
-		deleteAll(head->next);
-		free(head);
-		printf("\nDeleting a node\n");
-	}else{
-	
-		printf("\nabout to delete last node\n");
-		free(head);
-		printf("\nlast node deleted\n");
-		return;
-	}
-	return;
+	struct product* tmp = head;
+	while(head->next != NULL){
+		while(tmp->next != NULL){
+			tmp=tmp->next;
+}
+	free(tmp);
+}
+	free(head);
 }
 
 
