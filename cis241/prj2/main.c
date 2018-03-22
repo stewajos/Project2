@@ -1,86 +1,100 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "products.c"
+#include "products.h"
 int main(){
-	char option = 'q'; //variable to hold choices
-	printf(" 1: create an empty list	2: insert a product\n 
-	3: Delete a product	4: Delete entire list\n
-	5: Search a product	6: Display products in the list\n
-	7: Purchase a product	8: Sell a product\n
-	9: Save to file 	0: Exit\n");
-	while(option != 0){
-		scanf("%c", option);
-
-		if('1' == option){
-			//creating linked list of Products
-			product *head = (product *)malloc(sizeof(product));
-		}
-		else if('2' == option){
-			printf("\nPlease Enter the name of the product: ");
-			char[20] newName = "";
-			scanf(%s, newName);
+	struct product* head;
+	int listCreated = -1;
+	int option = 'q'; //variable to hold choices
+	while(0 != option){
+		printf("\n\n 1: create an empty list	2: insert a product\n 3: Delete a product	4: Delete entire list\n5: Search a product	6: Display products in the list\n7: Purchase a product	8: Sell a product\n	9: Save to file 	0: Exit\n");
 	
-			printf("\nPlease enter the product description 200 character max: ");
-			char[200] newDesc = "";
-			scanf(%s, newDesc);
+		scanf("%d", &option);
+
+		if(1 == option){
+			//creating linked list of Products
+			printf("\ncreating head\n");
+			head = malloc(sizeof(struct product*));
+			listCreated = 1;
+			//head->next = malloc(sizeof(struct product*));
+		}
+		else if(2 == option){
+			printf("\nPlease Enter the name of the product: ");
+			char newName[20];
+			scanf("%s", newName);
+	
+			printf("\nPlease enter the product unit of measurement: ");
+			char newDesc[20];
+			scanf("%s", newDesc);
 
 			printf("\nPlease enter the number of units: ");
 			int count = 0;
-			scanf(%d, count);
+			scanf("%d", &count);
 
 			printf("\nPlease enter the price of the product: ");
 			int newPrice = 0;
-			scanf(%d, newPrice);
+			scanf("%d", &newPrice);
 
-			struct product* newProd = malloc(sizeof(product));
-			
-			strcpy(newProd->name, newName);
+			struct product* newProd = malloc(sizeof(struct product*));
+			printf("\nMaking product...\n");
+			strcpy((*newProd).name,  newName);
 			strcpy(newProd->unit, newDesc);
 			newProd->quantity = count;
 			newProd->price = newPrice;
+			printf("\n...adding product to list...\n");
 			insert(newProd, head);		
-			
+			printf("\n...product created\n\n");
 			
 			
 				
 		}
-		else if('3' == option){
+		else if(3 == option){
 			printf("\nWhat's the name of the product?: ");	
-			char[20] newName = "";
-			scanf(%s, newName);
+			char newName[20];
+			scanf("%s", newName);
 			
-			deleteProduct(head, search(head, newName) );
+			deleteProduct(head,  newName);
 						
 		}
-		else if('4' == option){
+		else if(4 == option){
 			deleteAll(head);
 		}
-		else if('5' == option){
+		else if(5 == option){
 			printf("What is the name of the product?: ");
-			char[20] prodName = ""
-			scanf(%s, prodName);
+			char prodName[20];
+			scanf("%s", prodName);
 			
 			display(search(head, prodName));	
 		}
-		else if('6' == option){
+		else if(6 == option){
 			displayAll(head);	
 		}
-		else if('7' == option){
-			printf("What is the name of the product being purchased?: ");
-			char[20] itemName = "";
-			scanf(%s, itemName);
-			purchase(head, itemName);
+		else if(7 == option){
+			printf("\nWhat is the name of the product being purchased?: ");
+			char itemName[20];
+			scanf("%s", itemName);
+			purchaseProduct(head, itemName);
 			
 			
 			
 		}
-		else if('8' == option)
-	
+		else if(8 == option){
+			printf("\nWhat is the name of the product being sold?: ");	
+			char itemName[20];
+			scanf("%s", itemName);
+			sellProduct(head, itemName);
+
+
+		}	
+		else if(9 == option){
+			printf("\nFIXME: SAVE METHOD");
+			char saveName[20];
+			scanf("%s", saveName);
+			char* temp = malloc(20 * sizeof(char));
+			strcpy(temp, saveName);
+			saveStore(head, temp);
+				
 		}
-		else if('9' == option)
-	
-		}
-		else if('0' == option){
+		else if(0 == option){
 			exit(1);
 		}
 	}

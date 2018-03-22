@@ -1,41 +1,33 @@
-#include <stdio>
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
-struct product{
-	char[20] name;
-	char[200] unit;
-	int quantity;
-	int price;
-	struct product* next;
-}
-//we should just do this in the main
-void createList(){
-	product *head = (product *)malloc(sizeof(product));
-	//where does this come from?
-	d -> d = ‘n’; 
-	head -> next = NULL;
-}
-
-//what? Why do we have this?
-void getInfo ( struct product * pItem)  {
-	fscanf ( "%d %s %d", &(pItem->price), pItem->name, pItem->quantity);
-}
+#include "products.h"
+//struct product{
+//	char name[20];
+//	char unit[200];
+//	int quantity = 0;
+//	int price = 0;
+//	struct product* next = malloc(sizeof(struct product*));
+//};
 
 
 
 //delete a product
 void deleteProduct(struct product *head, char* itemName){
+	struct product* previous = head;
 	while(head->next != NULL && 0 != strcmp(head->name, itemName)){
+		previous = head;
 		head = head->next;
-
+		
 	}	
 	if(0 != strcmp(head->name, itemName)){
 		printf("Could not find product to delete");
 		return;
 		
 	}else{
-		struct product* temp = head->next->next;
-		free(head->next)
-		head->next = temp;
+		struct product* temp = head->next;
+		free(head);
+		previous->next = temp;
 	}	
 
 
@@ -43,10 +35,19 @@ void deleteProduct(struct product *head, char* itemName){
 
 //insert a product. Create the product in main and then just use this method
 void insert(struct product* newItem, struct product* head){
-	newItem->next = head->next;
+	//newItem->next = malloc(sizeof(struct product*));
+	printf("\nAbout to affix head->next to newItem->next\n");
+	*(newItem->next) = *( head->next);
+	printf("\nAbout to affix head->next to newItem\n");
 	head->next = newItem;
-	
-	
+	printf("\nReturning to main\n");
+//	printf("\nentering while loop\n");
+//	while(head->next != NULL){
+//		printf("\nlooping\n");
+//		head = head->next;
+//	}
+//	printf("\nAssigning newItem to head->next\n");
+//	head->next = newItem;
 }
 
 //Delete entire list
@@ -66,18 +67,45 @@ struct product* search(struct product* head, char* itemName){
 		head = head->next;
 	}
 	if(0 != strcmp(head->name, itemName)){
-		struct product* fail = malloc(sizeof(product));
-		fail->name = "Not Found."
+		struct product* fail = malloc(sizeof(struct product*));
+		strcpy(fail->name, "Not Found.");
 		return fail;
 	}else{
 		return head;	
 	}
 }
 
+
+void saveStore(struct product* head, char* saveName){
+	FILE* saveLocation = NULL;
+	char* temp = malloc(20 * sizeof(char));
+	strcpy(temp, saveName);
+	saveLocation = fopen(temp, "w+");
+	head = head->next;
+	while(head != NULL){
+		strcpy(temp, head->name);
+		fprintf(saveLocation, "Product: %s\n", temp);
+		strcpy(temp, head->unit);
+		fprintf(saveLocation, "Unit: %s\n", temp);
+		
+		fprintf(saveLocation, "Quantity: %d\n", head->quantity);
+		fprintf(saveLocation, "Price: %d\n", head->price);
+		head = head->next;
+	}
+
+	printf("\nFile Saved!\n");
+}
+
 //Display products in list
 void displayAll(struct product* head){
-	int count = 0;
-	while(head != NULL){
+	int count = 1;
+	if(head->next != NULL){
+		head = head->next;
+	}else{
+		return;
+	}
+	while(head){
+		
 		printf("Item %d:\n", count);
 		printf("Name: %s\n", head->name);
 		printf("Unit: %s\n", head->unit);
@@ -88,6 +116,7 @@ void displayAll(struct product* head){
 		head = head->next;
 		
 	}
+	printf("\nFinished displaying all %d items\n", count);
 	
 	
 }
@@ -113,7 +142,7 @@ void sellProduct(struct product* head, char* itemName){
 	
 	if(0 != strcmp(head->name, itemName)){
 		printf("Product not found for Deletion");
-		return NULL;
+		
 		
 	}else{
 		head->quantity = head->quantity - 1;
