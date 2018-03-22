@@ -15,7 +15,7 @@
 
 //delete a product
 void deleteProduct(struct product *head, char* itemName){
-struct product* previous = head;
+	struct product* previous = head;
 	while(head->next != NULL && 0 != strcmp(head->name, itemName)){
 		previous = head;
 		head = head->next;
@@ -30,10 +30,12 @@ struct product* previous = head;
 		free(head);
 		previous->next = temp;
 	}	
+
+
 }
 
 //insert a product. Create the product in main and then just use this method
-void insert(struct product* head, struct product* newNode){
+void insert(struct product* newItem, struct product* head){
 	int i = 0;
 	printf("\nabout to start while loop\n");
 	while(head->next != NULL){
@@ -42,7 +44,7 @@ void insert(struct product* head, struct product* newNode){
 		
 	}
 
-	head->next = newNode;
+	head->next = newItem;
 	//(*newItem)->next = NULL;
 }
 
@@ -53,9 +55,9 @@ void deleteAll(struct product* head){
 		while(temp->next != NULL){
 			temp= temp->next;
 		}
-		free(temp);
+	free(temp);
 	}
-	free(head);
+free(head);
 }
 
 
@@ -168,5 +170,4 @@ void purchaseProduct(struct product* head, char* itemName){
 	}else{
 		printf("Could not find product %s\n", itemName);
 	}
-
 }
