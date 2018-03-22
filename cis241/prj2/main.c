@@ -98,12 +98,11 @@ int main(){
 						
 		}
 		else if(listCreated > 0 && 4 == option){
-			struct product* temp = head; 
+			struct product* temp = head;
 			while(head->next != NULL){
-				head=head->next;
-				free(head);
-			}
-			free(temp);
+			head = head->next;
+			free(head);
+			} free(temp);
 		}
 		else if(listCreated > 0 && 5 == option){
 			printf("What is the name of the product?: ");
