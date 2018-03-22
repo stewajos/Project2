@@ -3,7 +3,8 @@
 #include "products.h"
 int main(){
 	struct product* head;
-	struct product* newProd;
+//	struct product* newProd;
+	struct product* iteration = malloc(sizeof(struct product*));
 	int listCreated = -1;
 	int listLength = 0;
 	int option = 'q'; //variable to hold choices
@@ -15,10 +16,10 @@ int main(){
 		if(1 == option){
 			//creating linked list of Products
 			printf("\ncreating head\n");
-			head = malloc(sizeof(struct product*));
+			head = malloc(sizeof(struct product));
 			listCreated = 1;
 			head->quantity = 0;
-			head->next = NULL;
+			//head->next = NULL;
 			head->price = 0;
 			head->lastNode = 1;
 			listLength += 1;
@@ -40,20 +41,33 @@ int main(){
 			int newPrice = 0;
 			scanf("%d", &newPrice);
 
-			newProd = (struct product*)malloc(sizeof(struct product*));
+			struct product* newProd = malloc(sizeof(struct product));
 			printf("\nMaking product...\n");
 			strcpy((*newProd).name,  newName);
 			strcpy(newProd->unit, newDesc);
 			newProd->quantity = count;
 			newProd->price = newPrice;
 			printf("\n...adding product to list...\n");
-			newProd->next = NULL;
+			//newProd->next = NULL;
 			newProd->lastNode = 1;
-			insert(&newProd, &head, listLength);		
-
+			insert(newProd, head);		
+			
+//			iteration = head;
+//			printf("\nTrying new thing...\n");
+//			int i;
+//			for(i = 1; i < listLength; i++){
+//				printf("\nNew thing loop\n");
+//				iteration = iteration->next;
+//				
+//			}
+//			iteration->next = newProd;
+			
+			
 			printf("\n...product created\n\n");
 				
 			listLength +=1;
+
+			
 				
 		}
 		else if(3 == option){
