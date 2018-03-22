@@ -35,30 +35,17 @@ void deleteProduct(struct product *head, char* itemName){
 }
 
 //insert a product. Create the product in main and then just use this method
-void insert(struct product** newItem, struct product** head, int listLength){
+void insert(struct product* newItem, struct product* head){
 	int i = 0;
-//	printf("\nAbout to affix head->next to newItem->next\n");
-//	(*newItem)->next =  (*head)->next;
-//	printf("\nAbout to affix newItem to head->next\n");
-//	(*head)->next = *newItem;
-//	printf("\nReturning to main\n");
-//	head->next = NULL;
-//
-//
-//	printf("\n%d is the lastNode bit of the head\n", head->lastNode);
-//	printf("\n%d is the price of the head\n", head->price);
-	printf("\nThe value of the new product is %d", (*newItem)->price);
-	printf("\nentering while loop\n");
-	for(i = 0; i < listLength - 1; i++ ){
-		printf("\nlooping\n");		
-		*head = (*head)->next;
+	printf("\nabout to start while loop\n");
+	while(head->next != NULL){
+		printf("\nlooping...\n");
+		head = head->next;
+		
 	}
-	//(*head)->lastNode = 0;
-	printf("\nAssigning newItem to head->next\n");
-	printf("\n%d is the lastNode bit of the newItem\n", (*newItem)->lastNode);
-	(*head)->next = malloc(sizeof(struct product));	
-	//(*head)->next = NULL;
-	(*head)->next = (*newItem);
+
+	head->next = newItem;
+	//(*newItem)->next = NULL;
 }
 
 //Delete entire list
@@ -115,7 +102,7 @@ void displayAll(struct product* head){
 //	}else{
 //		return;
 //	}
-	while(head->next != NULL){
+	while(head != NULL){
 		
 		printf("Item %d:\n", count);
 		printf("Name: %s\n", head->name);
