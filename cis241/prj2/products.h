@@ -6,12 +6,14 @@ char name[20];
 char unit[20];
 int quantity;
 int price;
+int lastNode;
 struct product* next;
+
 };
 
 void deleteProduct(struct product* head, char* itemName);
 
-void insert(struct product* head, struct product* newNode);
+void insert(struct product** head, struct product** newNode, int listLength);
 
 void deleteAll(struct product* head);
 

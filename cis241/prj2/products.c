@@ -1,8 +1,8 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include <string.h>
 #include "products.h"
-#include <stdio.h>
+//#include <stdio.h>
 //struct product{
 //	char name[20];
 //	char unit[200];
@@ -35,24 +35,30 @@ void deleteProduct(struct product *head, char* itemName){
 }
 
 //insert a product. Create the product in main and then just use this method
-void insert(struct product* newItem, struct product* head){
-	
+void insert(struct product** newItem, struct product** head, int listLength){
+	int i = 0;
 //	printf("\nAbout to affix head->next to newItem->next\n");
-//	newItem->next =  head->next;
+//	(*newItem)->next =  (*head)->next;
 //	printf("\nAbout to affix newItem to head->next\n");
-//	head->next = newItem;
+//	(*head)->next = *newItem;
 //	printf("\nReturning to main\n");
-	
+//	head->next = NULL;
 //
 //
+//	printf("\n%d is the lastNode bit of the head\n", head->lastNode);
+//	printf("\n%d is the price of the head\n", head->price);
+	printf("\nThe value of the new product is %d", (*newItem)->price);
 	printf("\nentering while loop\n");
-	while(head->next != NULL){
-		printf("\nlooping\n");
-		
-		head = head->next;
+	for(i = 0; i < listLength - 1; i++ ){
+		printf("\nlooping\n");		
+		*head = (*head)->next;
 	}
+	//(*head)->lastNode = 0;
 	printf("\nAssigning newItem to head->next\n");
-	head->next = newItem;
+	printf("\n%d is the lastNode bit of the newItem\n", (*newItem)->lastNode);
+	(*head)->next = malloc(sizeof(struct product));	
+	//(*head)->next = NULL;
+	(*head)->next = (*newItem);
 }
 
 //Delete entire list
@@ -104,11 +110,11 @@ void saveStore(struct product* head, char* saveName){
 //Display products in list
 void displayAll(struct product* head){
 	int count = 1;
-	if(head->next != NULL){
-		head = head->next;
-	}else{
-		return;
-	}
+//	if(head->next != NULL){
+//		head = head->next;
+//	}else{
+//		return;
+//	}
 	while(head->next != NULL){
 		
 		printf("Item %d:\n", count);
