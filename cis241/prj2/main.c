@@ -15,8 +15,10 @@ int main(){
 			printf("\ncreating head\n");
 			head = malloc(sizeof(struct product*));
 			listCreated = 1;
-			//head->next = malloc(sizeof(struct product*));
-		}
+			head->quantity = 0;
+			head->next = NULL;
+			head->price = 0;
+		}	
 		else if(2 == option){
 			printf("\nPlease Enter the name of the product: ");
 			char newName[20];
@@ -41,6 +43,7 @@ int main(){
 			newProd->quantity = count;
 			newProd->price = newPrice;
 			printf("\n...adding product to list...\n");
+			newProd->next = NULL;
 			insert(newProd, head);		
 			printf("\n...product created\n\n");
 			

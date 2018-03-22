@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "products.h"
+#include <stdio.h>
 //struct product{
 //	char name[20];
 //	char unit[200];
@@ -35,27 +36,31 @@ void deleteProduct(struct product *head, char* itemName){
 
 //insert a product. Create the product in main and then just use this method
 void insert(struct product* newItem, struct product* head){
-	//newItem->next = malloc(sizeof(struct product*));
-	printf("\nAbout to affix head->next to newItem->next\n");
-	*(newItem->next) = *( head->next);
-	printf("\nAbout to affix head->next to newItem\n");
-	head->next = newItem;
-	printf("\nReturning to main\n");
-//	printf("\nentering while loop\n");
-//	while(head->next != NULL){
-//		printf("\nlooping\n");
-//		head = head->next;
-//	}
-//	printf("\nAssigning newItem to head->next\n");
+	
+//	printf("\nAbout to affix head->next to newItem->next\n");
+//	newItem->next =  head->next;
+//	printf("\nAbout to affix newItem to head->next\n");
 //	head->next = newItem;
+//	printf("\nReturning to main\n");
+	
+//
+//
+	printf("\nentering while loop\n");
+	while(head->next != NULL){
+		printf("\nlooping\n");
+		
+		head = head->next;
+	}
+	printf("\nAssigning newItem to head->next\n");
+	head->next = newItem;
 }
 
 //Delete entire list
 void deleteAll(struct product* head){
 	if(head!=NULL){
-	deleteAll(head->next);
-	free(head);
-}
+		deleteAll(head->next);
+		free(head);
+	}
 
 
 }
@@ -104,7 +109,7 @@ void displayAll(struct product* head){
 	}else{
 		return;
 	}
-	while(head){
+	while(head->next != NULL){
 		
 		printf("Item %d:\n", count);
 		printf("Name: %s\n", head->name);
