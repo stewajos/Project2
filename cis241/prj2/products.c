@@ -59,8 +59,6 @@ void deleteAll(struct product* head){
 	}
 free(head);
 }
-	
-}
 
 
 //search for a product by name
