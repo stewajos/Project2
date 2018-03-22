@@ -19,7 +19,7 @@ int main(){
 			head = malloc(sizeof(struct product));
 			listCreated = 1;
 			head->quantity = 0;
-			//head->next = NULL;
+			head->next = NULL;
 			head->price = 0;
 			head->lastNode = 1;
 			listLength += 1;
@@ -99,6 +99,7 @@ int main(){
 		}
 		else if(listCreated > 0 && 4 == option){
 			deleteAll(head);
+			listCreated = -1;
 		}
 		else if(listCreated > 0 && 5 == option){
 			printf("What is the name of the product?: ");
