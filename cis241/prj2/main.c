@@ -13,7 +13,7 @@ int main(){
 	
 		scanf("%d", &option);
 
-		if(1 == option){
+		if(listCreated < 1 && 1 == option){
 			//creating linked list of Products
 			printf("\ncreating head\n");
 			head = malloc(sizeof(struct product));
@@ -25,22 +25,41 @@ int main(){
 			listLength += 1;
 		}	
 		else if(listCreated > 0 && 2 == option){
-			printf("\nPlease Enter the name of the product: ");
-			char newName[20];
-			scanf("%s", newName);
-	
-			printf("\nPlease enter the product unit of measurement: ");
+			printf("\nPlease Enter the name of the product(Must be within max 20 characters): ");
+			char newName[200];
+			strcpy(newName, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+			while(strlen(newName) > 20){
+				scanf("%s", newName);
+				if(strlen(newName) > 20){
+					printf("\nPlease try again\n");
+				}
+
+			}
+			printf("\nPlease enter the product unit of measurement(Must be within max 20 characters): ");
 			char newDesc[200];
-			scanf("%s", newDesc);
-
-			printf("\nPlease enter the number of units: ");
-			int count = 0;
-			scanf("%d", &count);
-
-			printf("\nPlease enter the price of the product: ");
-			int newPrice = 0;
-			scanf("%d", &newPrice);
-
+			strcpy(newDesc, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+			while(strlen(newDesc) > 20){
+				scanf("%s", newDesc);
+				if(strlen(newDesc) > 20){
+					printf("\nPlease try again\n");
+				}
+			}
+			printf("\nPlease enter the number of units(only positive values or zero accepted): ");
+			int count = -1;
+			while(count < 0){
+				scanf("%d", &count);
+				if(count < 0){
+					printf("\nPlease enter a valid number\n");
+				}
+			}
+			printf("\nPlease enter the price of the product(only positive values or zero accepted): ");
+			int newPrice = -1;
+			while(newPrice < 0){
+				scanf("%d", &newPrice);
+				if(newPrice < 0){
+					printf("\nPlease enter a valid number\n");
+				}
+			}
 			struct product* newProd = malloc(sizeof(struct product));
 			printf("\nMaking product...\n");
 			strcpy((*newProd).name,  newName);
