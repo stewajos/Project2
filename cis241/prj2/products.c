@@ -37,6 +37,11 @@ void deleteProduct(struct product *head, char* itemName){
 //insert a product. Create the product in main and then just use this method
 void insert(struct product* newItem, struct product* head){
 	int i = 0;
+	if(strcmp(search(head, newItem->name)->name, "Not Found.")){
+		printf("\nSorry, this item already exists!\n");
+		return;
+	}
+	
 	printf("\nabout to start while loop\n");
 	while(head->next != NULL){
 		printf("\nlooping...\n");
@@ -96,21 +101,27 @@ void saveStore(struct product* head, char* saveName){
 
 //Display products in list
 void displayAll(struct product* head){
-	int count = 1;
+	int count = 0;
 //	if(head->next != NULL){
 //		head = head->next;
 //	}else{
 //		return;
 //	}
+	if(head->next != NULL){
+		head = head->next;
+	}else{
+		printf("Nothing in stock!");
+		return;
+	}
 	while(head != NULL){
-		
+		count++;
 		printf("Item %d:\n", count);
 		printf("Name: %s\n", head->name);
 		printf("Unit: %s\n", head->unit);
 		printf("Quantity: %d\n", head->quantity);
 		printf("Price: %d\n\n\n", head->price);
 		
-		count++;
+		
 		
 		head = head->next;
 		
@@ -133,22 +144,26 @@ void display(struct product* node){
 
 //sell a product
 void sellProduct(struct product* head, char* itemName){
+	struct product* top = head;
 	struct product* previous = head;
-	while(head->next != NULL && 0 != strcmp(head->name, itemName)){
+	while(head != NULL && 0 != strcmp(head->name, itemName)){
 		head = head->next;
 		previous = head;
 	}
-	
-	if(0 != strcmp(head->name, itemName)){
+		
+	//if(0 != strcmp(head->name, itemName)){
+	if(head == NULL){
 		printf("Product not found for Deletion");
 		
 		
 	}else{
 		head->quantity = head->quantity - 1;
 		if(head->quantity < 1){
-			struct product* temp = head->next->next;
-			previous->next = temp;
-			free(head);
+			
+			deleteProduct(top, itemName);
+			
+			
+			
 			
 		}
 	}
