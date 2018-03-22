@@ -15,7 +15,7 @@
 
 //delete a product
 void deleteProduct(struct product *head, char* itemName){
-	struct product* previous = head;
+struct product* previous = head;
 	while(head->next != NULL && 0 != strcmp(head->name, itemName)){
 		previous = head;
 		head = head->next;
@@ -30,8 +30,6 @@ void deleteProduct(struct product *head, char* itemName){
 		free(head);
 		previous->next = temp;
 	}	
-
-
 }
 
 //insert a product. Create the product in main and then just use this method
@@ -180,4 +178,5 @@ void purchaseProduct(struct product* head, char* itemName){
 	}else{
 		printf("Could not find product %s\n", itemName);
 	}
+
 }
