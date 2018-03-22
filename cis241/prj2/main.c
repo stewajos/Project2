@@ -24,7 +24,7 @@ int main(){
 			head->lastNode = 1;
 			listLength += 1;
 		}	
-		else if(2 == option){
+		else if(listCreated > 0 && 2 == option){
 			printf("\nPlease Enter the name of the product: ");
 			char newName[20];
 			scanf("%s", newName);
@@ -70,7 +70,7 @@ int main(){
 			
 				
 		}
-		else if(3 == option){
+		else if(listCreated > 0 && 3 == option){
 			printf("\nWhat's the name of the product?: ");	
 			char newName[20];
 			scanf("%s", newName);
@@ -78,20 +78,20 @@ int main(){
 			deleteProduct(head,  newName);
 						
 		}
-		else if(4 == option){
+		else if(listCreated > 0 && 4 == option){
 			deleteAll(head);
 		}
-		else if(5 == option){
+		else if(listCreated > 0 && 5 == option){
 			printf("What is the name of the product?: ");
 			char prodName[20];
 			scanf("%s", prodName);
 			
 			display(search(head, prodName));	
 		}
-		else if(6 == option){
+		else if(listCreated > 0 && 6 == option){
 			displayAll(head);	
 		}
-		else if(7 == option){
+		else if(listCreated > 0 && 7 == option){
 			printf("\nWhat is the name of the product being purchased?: ");
 			char itemName[20];
 			scanf("%s", itemName);
@@ -100,7 +100,7 @@ int main(){
 			
 			
 		}
-		else if(8 == option){
+		else if(listCreated > 0 && 8 == option){
 			printf("\nWhat is the name of the product being sold?: ");	
 			char itemName[20];
 			scanf("%s", itemName);
@@ -108,17 +108,22 @@ int main(){
 
 
 		}	
-		else if(9 == option){
+		else if(listCreated > 0 && 9 == option){
 			printf("\nFIXME: SAVE METHOD");
-			char saveName[20];
+			char* saveName = malloc(20 * sizeof(char));
+			printf("\nPlease enter the full name of the save file: ");
 			scanf("%s", saveName);
 			char* temp = malloc(20 * sizeof(char));
 			strcpy(temp, saveName);
+			printf("\nAbout to call save method\n");
 			saveStore(head, temp);
 				
 		}
 		else if(0 == option){
 			exit(1);
+		}else{
+			printf("\nSorry, you must have entered an invalid command. Are you sure you created the list?\n");
+			
 		}
 	}
 	return 0;

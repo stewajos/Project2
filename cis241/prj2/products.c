@@ -33,7 +33,7 @@ struct product* previous = head;
 }
 
 //insert a product. Create the product in main and then just use this method
-void insert(struct product* newItem, struct product* head){
+void insert(struct product* head, struct product* newNode){
 	int i = 0;
 	printf("\nabout to start while loop\n");
 	while(head->next != NULL){
@@ -42,19 +42,19 @@ void insert(struct product* newItem, struct product* head){
 		
 	}
 
-	head->next = newItem;
+	head->next = newNode;
 	//(*newItem)->next = NULL;
 }
 
 //Delete entire list
 void deleteAll(struct product* head){
-	struct product* tmp = head;
+	struct product* temp = head;
 	while(head->next != NULL){
-		while(tmp->next != NULL){
-			tmp=tmp->next;
-}
-	free(tmp);
-}
+		while(temp->next != NULL){
+			temp= temp->next;
+		}
+		free(temp);
+	}
 	free(head);
 }
 
@@ -87,10 +87,10 @@ void saveStore(struct product* head, char* saveName){
 		fprintf(saveLocation, "Unit: %s\n", temp);
 		
 		fprintf(saveLocation, "Quantity: %d\n", head->quantity);
-		fprintf(saveLocation, "Price: %d\n", head->price);
+		fprintf(saveLocation, "Price: %d\n\n\n", head->price);
 		head = head->next;
 	}
-
+	fclose(saveLocation);
 	printf("\nFile Saved!\n");
 }
 
@@ -109,6 +109,7 @@ void displayAll(struct product* head){
 		printf("Unit: %s\n", head->unit);
 		printf("Quantity: %d\n", head->quantity);
 		printf("Price: %d\n\n\n", head->price);
+		
 		count++;
 		
 		head = head->next;
