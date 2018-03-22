@@ -13,7 +13,7 @@ struct product* next;
 
 void deleteProduct(struct product* head, char* itemName);
 
-void insert(struct product* head, struct product* newNode);
+void insert(struct product* newNode, struct product* head);
 
 void deleteAll(struct product* head);
 

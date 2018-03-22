@@ -42,9 +42,9 @@ void insert(struct product* newItem, struct product* head){
 		return;
 	}
 	
-	printf("\nabout to start while loop\n");
+//	printf("\nabout to start while loop\n");
 	while(head->next != NULL){
-		printf("\nlooping...\n");
+//		printf("\nlooping...\n");
 		head = head->next;
 		
 	}

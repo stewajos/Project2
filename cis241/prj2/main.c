@@ -91,51 +91,85 @@ int main(){
 		}
 		else if(listCreated > 0 && 3 == option){
 			printf("\nWhat's the name of the product?: ");	
-			char newName[20];
-			scanf("%s", newName);
+			char newName[200];
+                        strcpy(newName, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                        while(strlen(newName) > 20){
+                                scanf("%s", newName);
+                                if(strlen(newName) > 20){
+                                        printf("\nPlease try again\n");
+                                }
+
+                        }
 			
 			deleteProduct(head,  newName);
 						
 		}
 		else if(listCreated > 0 && 4 == option){
-			deleteAll(head);
 			listCreated = -1;
+			struct product* temp = head;
+			while(head->next != NULL){
+				head = head->next;
+				free(head);
+			}free(temp);
+
 		}
 		else if(listCreated > 0 && 5 == option){
 			printf("What is the name of the product?: ");
-			char prodName[20];
-			scanf("%s", prodName);
-			
+			char prodName[200];
+			strcpy(prodName, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+			while(strlen(prodName) > 20){
+				scanf("%s", prodName);
+				if(strlen(prodName) > 20){
+					printf("\nPlease try again\n");
+				}
+			}
 			display(search(head, prodName));	
 		}
 		else if(listCreated > 0 && 6 == option){
 			displayAll(head);	
 		}
 		else if(listCreated > 0 && 7 == option){
-			printf("\nWhat is the name of the product being purchased?: ");
-			char itemName[20];
-			scanf("%s", itemName);
+
+
+			printf("\nPlease Enter the name of the product(Must be within max 20 characters): ");
+                        char itemName[200];
+                        strcpy(itemName, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                        while(strlen(itemName) > 20){
+                                scanf("%s", itemName);
+                                if(strlen(itemName) > 20){
+                                        printf("\nPlease try again\n");
+                                }
+
+                        }
+
 			purchaseProduct(head, itemName);
 			
 			
 			
 		}
 		else if(listCreated > 0 && 8 == option){
-			printf("\nWhat is the name of the product being sold?: ");	
-			char itemName[20];
-			scanf("%s", itemName);
-			sellProduct(head, itemName);
+			printf("\nPlease Enter the name of the product(Must be within max 20 characters): ");
+                        char itemName[200];
+			strcpy(itemName, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                        while(strlen(itemName) > 20){
+                                scanf("%s", itemName);
+                                if(strlen(itemName) > 20){
+                                        printf("\nPlease try again\n");
+                                }
 
+                        }
+			sellProduct(head, itemName);
 
 		}	
 		else if(listCreated > 0 && 9 == option){
-			printf("\nFIXME: SAVE METHOD");
-			char* saveName = malloc(20 * sizeof(char));
+//			printf("\nFIXME: SAVE METHOD");
+			//char* saveName = malloc(20 * sizeof(char));
 			printf("\nPlease enter the full name of the save file: ");
+			char saveName[200];
 			scanf("%s", saveName);
-			char* temp = malloc(20 * sizeof(char));
+			char* temp = malloc(200 * sizeof(char));
 			strcpy(temp, saveName);
-			printf("\nAbout to call save method\n");
+//			printf("\nAbout to call save method\n");
 			saveStore(head, temp);
 				
 		}
