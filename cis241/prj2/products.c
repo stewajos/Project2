@@ -50,18 +50,12 @@ void insert(struct product* newItem, struct product* head){
 
 //Delete entire list
 void deleteAll(struct product* head){
-	if(head->next!=NULL){
+	if(head!=NULL){
 		deleteAll(head->next);
 		free(head);
 		printf("\nDeleting a node\n");
-	}else{
-	
-		printf("\nabout to delete last node\n");
-		free(head);
-		printf("\nlast node deleted\n");
-		return;
 	}
-	return;
+	
 }
 
 
@@ -93,10 +87,10 @@ void saveStore(struct product* head, char* saveName){
 		fprintf(saveLocation, "Unit: %s\n", temp);
 		
 		fprintf(saveLocation, "Quantity: %d\n", head->quantity);
-		fprintf(saveLocation, "Price: %d\n", head->price);
+		fprintf(saveLocation, "Price: %d\n\n\n", head->price);
 		head = head->next;
 	}
-
+	fclose(saveLocation);
 	printf("\nFile Saved!\n");
 }
 
@@ -115,6 +109,7 @@ void displayAll(struct product* head){
 		printf("Unit: %s\n", head->unit);
 		printf("Quantity: %d\n", head->quantity);
 		printf("Price: %d\n\n\n", head->price);
+		
 		count++;
 		
 		head = head->next;
