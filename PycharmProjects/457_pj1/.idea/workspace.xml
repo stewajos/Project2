@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1002c8a3-5d9c-46f6-993f-df7922051dbd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/457Project/Client.py" beforeDir="false" afterPath="$PROJECT_DIR$/457Project/Client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/457Project/Client.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/457Project/Server.py" beforeDir="false" afterPath="$PROJECT_DIR$/457Project/Server.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,7 +57,7 @@
       <workItem from="1582221311800" duration="86000" />
       <workItem from="1582221416973" duration="6336000" />
       <workItem from="1582228129012" duration="3689000" />
-      <workItem from="1582478438012" duration="5415000" />
+      <workItem from="1582478438012" duration="6512000" />
     </task>
     <servers />
   </component>
@@ -65,6 +65,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="549" y="243" width="495" height="382" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1582484880915">
+      <screen x="0" y="0" width="1600" height="874" />
+    </state>
+    <state x="549" y="243" width="495" height="382" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1600.874@0.0.1600.874" timestamp="1582484880915" />
     <state x="536" y="294" key="com.intellij.ide.util.TipDialog" timestamp="1582478440505">
       <screen x="0" y="0" width="1600" height="874" />
     </state>
