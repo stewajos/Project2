@@ -56,7 +56,8 @@
       <workItem from="1582040859202" duration="778000" />
       <workItem from="1582221311800" duration="86000" />
       <workItem from="1582221416973" duration="6336000" />
-      <workItem from="1582228129012" duration="3582000" />
+      <workItem from="1582228129012" duration="3689000" />
+      <workItem from="1582478438012" duration="4693000" />
     </task>
     <servers />
   </component>
@@ -64,9 +65,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="643" y="355" key="com.intellij.ide.util.TipDialog" timestamp="1582228129103">
-      <screen x="0" y="0" width="1920" height="1054" />
+    <state x="536" y="294" key="com.intellij.ide.util.TipDialog" timestamp="1582478440505">
+      <screen x="0" y="0" width="1600" height="874" />
     </state>
+    <state x="536" y="294" key="com.intellij.ide.util.TipDialog/0.0.1600.874@0.0.1600.874" timestamp="1582478440505" />
     <state x="643" y="355" key="com.intellij.ide.util.TipDialog/0.0.1920.1054@0.0.1920.1054" timestamp="1582228129103" />
     <state x="685" y="442" width="544" height="164" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1582225794537">
       <screen x="0" y="0" width="1920" height="1054" />
